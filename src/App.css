@@ -1,38 +1,459 @@
+/* General reset and base styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000;
+  color: #fff;
+  scroll-behavior: smooth;
+}
+
 .App {
+  overflow-x: hidden;
+}
+
+/* Navbar with glass effect */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  height: 60px;
+  padding: 5px 30px;
+
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  height: 100%;
+  max-height: 60px;  /* matches navbar height */
+  width: auto;
+  object-fit: contain;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav-links li a {
+  color: rgba(255, 255, 255, 0.988);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.nav-links li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #00ffe7;
+}
+
+/* Sections */
+.section {
+  width: 100vw;
+  min-height: 100vh;
+  padding-top: 80px; /* navbar height + spacing */
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Section title */
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Home section logo styling */
+.home-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.home-logo {
+  width: 300px;
+  height: 300px;
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 50%;
+  animation: float 4s ease-in-out infinite;
+  object-fit: contain;
+}
+.logo-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+}
+/* Subtitle styling */
+.section-subtitle {
+  font-size: 1.25rem;
+  color: #ccc;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Get Started button */
+.cta-button {
+  padding: 12px 24px;
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #e6b800;
+  transform: scale(1.05);
+}
+
+.cta-button:active {
+  transform: scale(0.98);
+}
+
+/* Make the content stack properly below the image */
+.home-content {
+  margin-top: 30px;
+  text-align: center;
+  max-width: 90%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    font-size: 1.1rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.scrambled-text-demo {
+  font-size: 2rem;
+  color: #00ffe7;
+  margin-top: 10px;
+}
+/* === About Section Styling === */
+#about p {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+/* === Bento Grid Layout === */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.bento-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.bento-card:hover {
+  transform: translateY(-5px);
+}
+
+.bento-card h2 {
+  font-size: 1.4rem;
+  color: #00ffe7;
+  margin-bottom: 15px;
+}
+
+.bento-card ul {
+  padding-left: 20px;
+}
+
+.bento-card ul li {
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  #about p {
+    font-size: 1rem;
+  }
+}
+/* === 3x3 Glassmorphism Grid for About Section === */
+/* === Dark Glassmorphism Grid Styling === */
+.grid-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.glass-card {
+  padding: 25px 20px;
+  border-radius: 20px;
+  background: rgba(30, 30, 30, 0.35); /* dark transparent base */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 25px rgba(0, 255, 231, 0.05);
+  transition: all 0.3s ease;
+  text-align: center;
+  color: #eee;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  background: rgba(0, 255, 231, 0.05);
+  border: 1px solid rgba(0, 255, 231, 0.3);
+  box-shadow: 0 0 30px rgba(0, 255, 231, 0.15);
+  color: #00ffe7;
+}
+
+.glass-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #00ffe7;
+  font-weight: 600;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: #bbb;
+  line-height: 1.5;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Responsive Grid Layout */
+@media (max-width: 1024px) {
+  .grid-3x3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-3x3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Products Section Styling === */
+.products-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: transparent;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #bbbbbb;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.product-img {
+  width: 250px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-img:hover {
+  transform: scale(1.05);
+}
+
+.products-button {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ffffff30;
+  border-radius: 10px;
   color: white;
+  font-size: 1rem;
+  cursor: po
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2x2 Grid */
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  margin-top: 30px;
+  width: 100%;
+  max-width: 800px;
 }
 
-.App-link {
-  color: #61dafb;
+.gallery-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-@keyframes App-logo-spin {
+.gallery-img:hover {
+  transform: scale(1.05);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.modal-image-wide {
+  width: 90vw;
+  max-height: 70vh;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  animation: zoomIn 0.3s ease;
+  cursor: pointer;
+}
+
+@keyframes zoomIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: scale(0.95);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: scale(1);
   }
+}
+.contact-details {
+  margin-top: 2rem;
+  text-align: center;
+  color: #ccc;
+  font-size: 1rem;
+}
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 1.5rem;
+}
+
+.feedback-form input,
+.feedback-form select {
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.feedback-form select option {
+  background: #1c1c1c;
+  color: #fff;
+}
+
+.feedback-form button {
+  padding: 0.75rem;
+  background-color: #00ffe7;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.feedback-form button:hover {
+  background-color: #00ccb8;
+}
+
+.thank-you-message {
+  font-size: 1.4rem;
+  color: #00ffb3;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* Float animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
 }
